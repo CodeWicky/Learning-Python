@@ -250,6 +250,221 @@ print (tinydict.values()) # 输出所有值
 |hex(x)                    |将一个整数转换为一个十六进制字符串         |
 |oct(x)                    |将一个整数转换为一个八进制字符串          |
 
+### Python位运算符
+
+与c语言保持一直
+
+### Python逻辑运算符
+
+与lua保持一直，and / or / not
+
+### Python成员运算符
+
+除了以上的一些运算符之外，Python还支持成员运算符，测试实例中包含了一系列的成员，包括字符串，列表或元组。
+
+|函数|描述|实例|
+|:--:|:--:|:--:|
+|in|如果在指定的序列中找到值返回 True，否则返回 False。	|x 在 y 序列中 , 如果 x 在 y 序列中返回 True。|
+|not in	|如果在指定的序列中没有找到值返回 True，否则返回 False。	|x 不在 y 序列中 , 如果 x 不在 y 序列中返回 True。|
+
+```python3
+#!/usr/bin/python3
+ 
+a = 10
+b = 20
+list = [1, 2, 3, 4, 5 ];
+ 
+if ( a in list ):
+   print ("1 - 变量 a 在给定的列表中 list 中")
+else:
+   print ("1 - 变量 a 不在给定的列表中 list 中")
+ 
+if ( b not in list ):
+   print ("2 - 变量 b 不在给定的列表中 list 中")
+else:
+   print ("2 - 变量 b 在给定的列表中 list 中")
+ 
+# 修改变量 a 的值
+a = 2
+if ( a in list ):
+   print ("3 - 变量 a 在给定的列表中 list 中")
+else:
+   print ("3 - 变量 a 不在给定的列表中 list 中")
+```
+
+### Python身份运算符
+
+身份运算符用于比较两个对象的存储单元，比较存储单元是否相同。类似于 id() ，id()函数用于获取对象内存地址。
+
+```python3
+#!/usr/bin/python3
+ 
+a = 20
+b = 20
+ 
+if ( a is b ):
+   print ("1 - a 和 b 有相同的标识")
+else:
+   print ("1 - a 和 b 没有相同的标识")
+ 
+if ( id(a) == id(b) ):
+   print ("2 - a 和 b 有相同的标识")
+else:
+   print ("2 - a 和 b 没有相同的标识")
+ 
+# 修改变量 b 的值
+b = 30
+if ( a is b ):
+   print ("3 - a 和 b 有相同的标识")
+else:
+   print ("3 - a 和 b 没有相同的标识")
+ 
+if ( a is not b ):
+   print ("4 - a 和 b 没有相同的标识")
+else:
+   print ("4 - a 和 b 有相同的标识")
+```
+
 ---
 
+## 字符串
 
+### Python字符串格式化
+Python 支持格式化字符串的输出 。尽管这样可能会用到非常复杂的表达式，但最基本的用法是将一个值插入到一个有字符串格式符 %s 的字符串中。
+
+在 Python 中，字符串格式化使用与 C 中 sprintf 函数一样的语法。
+
+```python3
+#!/usr/bin/python3
+ 
+print ("我叫 %s 今年 %d 岁!" % ('小明', 10))
+```
+
+---
+
+## 条件控制
+
+```python3
+if condition_1:
+    statement_block_1
+elif condition_2:
+    statement_block_2
+else:
+    statement_block_3
+```
+---
+
+## 循环语句
+
+### while
+
+```python3
+#!/usr/bin/env python3
+ 
+n = 100
+ 
+sum = 0
+counter = 1
+while counter <= n:
+    sum = sum + counter
+    counter += 1
+ 
+print("1 到 %d 之和为: %d" % (n,sum))
+```
+
+### while else
+
+```python3
+#!/usr/bin/python3
+ 
+count = 0
+while count < 5:
+   print (count, " 小于 5")
+   count = count + 1
+else:
+   print (count, " 大于或等于 5")
+```
+
+### for in
+
+```python3
+#!/usr/bin/python3
+ 
+sites = ["Baidu", "Google","Runoob","Taobao"]
+for site in sites:
+    if site == "Runoob":
+        print("菜鸟教程!")
+        break
+    print("循环数据 " + site)
+else:
+    print("没有循环数据!")
+print("完成循环!")
+```
+
+### pass
+
+空语句，无含义，代码整洁。
+
+## Python3 迭代器与生成器
+
+```python3
+>>>list=[1,2,3,4]
+>>> it = iter(list)    # 创建迭代器对象
+>>> print (next(it))   # 输出迭代器的下一个元素
+1
+>>> print (next(it))
+2
+>>>
+
+#!/usr/bin/python3
+ 
+list=[1,2,3,4]
+it = iter(list)    # 创建迭代器对象
+for x in it:
+    print (x, end=" ")
+```
+
+---
+## 函数
+
+```python3
+# 计算面积函数
+def area(width, height):
+    return width * height
+ 
+```
+
+### 变长参数
+
+加了星号 * 的参数会以元组(tuple)的形式导入，存放所有未命名的变量参数。
+
+```python3
+
+#!/usr/bin/python3
+  
+# 可写函数说明
+def printinfo( arg1, *vartuple ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vartuple)
+ 
+# 调用printinfo 函数
+printinfo( 70, 60, 50 )
+```
+
+加了两个星号 ** 的参数会以字典的形式导入。
+
+```python3
+#!/usr/bin/python3
+  
+# 可写函数说明
+def printinfo( arg1, **vardict ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vardict)
+ 
+# 调用printinfo 函数
+printinfo(1, a=2,b=3)
+```
