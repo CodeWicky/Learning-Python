@@ -468,3 +468,4 @@ def printinfo( arg1, **vardict ):
 # 调用printinfo 函数
 printinfo(1, a=2,b=3)
 ```
+
